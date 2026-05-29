@@ -1,9 +1,7 @@
-import React from 'react'
-
-const myOders = () => {
+const MyOders = () => {
   return (
     <div>myOders</div>
   )
 }
 
-export default myOders
+export default MyOders
