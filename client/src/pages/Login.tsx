@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { replace, useNavigate,Link } from "react-router-dom";
 import { heroSectionData } from "../assets/assets";
-import { BikeIcon,UserIcon } from "lucide-react";
+import { BikeIcon,Loader2Icon,LockIcon,MailIcon,UserIcon } from "lucide-react";
 
 const Login = () => {
 
@@ -27,7 +27,7 @@ const Login = () => {
       {/* Left side  */}
        <div  className=" hidden lg:flex lg:w-1/2  bg-app-green relative items-center justify-center ">
           <img src={ heroSectionData.hero_image } alt="" className=" absolute inset-0  object-cover h-full  bg-center opacity-10 " />
-          <div className=" relative text-center px-12 ">
+          <div className="relative text-center px-12 ">
             <h2 className=" text-4xl font-semibold text-white mb-4 " > Welcome to InstaCart.</h2>
             <p className="  text-white/60  font-serif text-xl max-w-sm mx-auto ">Rwandan groceries and  organic produce, delivered to your doorstep.</p>
           </div>
@@ -77,19 +77,38 @@ const Login = () => {
             </label>
           )}
           <label className="text-sm flex flex-col gap-1">
-              Name
+              Email address
               <div className="relative">
-                <UserIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-app-text-light" />
+                <MailIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-app-text-light" />
                 <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
-                  placeholder="Your name"
+                  placeholder="you@example.com"
                   className="w-full pl-10 pr-4 py-3 text-sm bg-white rounded-xl border not-focus:border-app-border transition-all"
                 />
               </div>
-            </label>
+          </label>
+          <label className="text-sm flex flex-col gap-1">
+              Password
+              <div className="relative">
+                <LockIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-app-text-light" />
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  placeholder="......."
+                  className="w-full pl-10 pr-4 py-3 text-sm bg-white rounded-xl border not-focus:border-app-border transition-all"
+                />
+              </div>
+          </label>
+
+          <button  type="submit" disabled={loading} className="flex-center w-full py-3 bg-green-950 text-white font-semibold 
+                   rounded-xl hover:bg-green-900 transition-colors disabled:opacity-50">
+            {loading ? <Loader2Icon className=" animate-spin"/>: isLoginState? "Sign in":" Sign up" }
+          </button>
         </form>
         </div>
       </div>
