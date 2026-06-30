@@ -27,7 +27,7 @@ return (
 <Route path='/' element={<AppLayout/>}>
   <Route index element={<Home/>}/>
   <Route path='products' element={<Products/>}/>
-  <Route path ='products/:id ' element={<ProductPage/>}/>
+  <Route path ='products/:id' element={<ProductPage/>}/>
   <Route path ='search' element={< SearchResults/>}/>
   <Route path ='deals' element={<  FlashDeals />}/>
 
@@ -40,9 +40,6 @@ return (
    
 </Route>
 </Routes>
-
-
-
 </>
 )
 }

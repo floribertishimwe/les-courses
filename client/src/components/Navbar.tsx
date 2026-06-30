@@ -1,21 +1,42 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { ArrowUpRight, BikeIcon, ChevronDown, LogOutIcon, MapPinIcon, MenuIcon, PackageCheck, PackageIcon, SearchIcon, ShieldIcon, ShoppingCartIcon, User2Icon, UserIcon, XIcon } from "lucide-react";
+import { ArrowUpRight,
+         BikeIcon,
+         ChevronDown,
+         LogOutIcon, 
+         MapPinIcon, 
+         MenuIcon,
+         PackageIcon, 
+         SearchIcon, 
+         ShieldIcon, 
+         ShoppingCartIcon, 
+         UserIcon, XIcon } from "lucide-react";
 const Navbar = () => {
-  const user: any = { name: "John Doe", email: "test@gmail.com", isAdmin: true };
-  
-  // Fixed typo: OPen -> Open
+  const user: any = { name:"John Doe", email:"john@example.com", isAdmin:true}
   const { cartCount, setIsCartOpen } = {
     cartCount: 5,
     setIsCartOpen: (_data: any) => {},
   };
   
   const [searchQuery, setSearchQuery] = useState("");
-  const [userMenuOpen, setUserMenuOpen] = useState(false); // Fixed typo: OPen -> Open
+  const [userMenuOpen, setUserMenuOpen] = useState(false); 
   const navigate = useNavigate();
 
+  const handleSearch =( e:React.SubmitEvent )=>{
+    e.preventDefault();
+    if ( searchQuery.trim() ){
+      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`)
+      setSearchQuery("");
+    }}
+
+    const handleLogout =()=>{
+          setUserMenuOpen(false);
+          navigate("/");
+    }
+
+
   return (
-    <nav className="bg-white sticky top-0 z-50 border-b border-app-border">
+    <nav className="bg-white sticky top-0 z-30 border-b border-app-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 gap-4">
         {/* logo */}
         <Link to="/" className="flex items-center gap-2 text-[22px] font-medium shrink-0">
@@ -31,7 +52,7 @@ const Navbar = () => {
           </div>
           
           {/* Search */}
-          <form className="hidden sm:flex flex-1 max-w-sm text-xs sm:text-sm">
+          <form    onSubmit={handleSearch} className="hidden sm:flex flex-1 max-w-sm text-xs sm:text-sm">
             <div className="relative w-full">
               <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-4 text-zinc-500" />
               <input
@@ -69,7 +90,7 @@ const Navbar = () => {
                   < ChevronDown  className="size-3 text-zinc-500"/>
                 </button>
               ) : (
-                <div  className="  flex-center gap-2">
+                <div  className="flex items-center gap-2">
                   <Link to='/login' className="hidden md:flex items-center gap-2 px-4 py-2 text-sm 
                    font-medium text-white bg-green-950  rounded-full hover:bg-green-950-light transition-colors ">
                   < UserIcon  size={16}/> Sign In
@@ -96,13 +117,13 @@ const Navbar = () => {
                     { user && <Link to='/addresses' className=" dropdown-link "> < MapPinIcon size={16} />Addresses </Link> }
                     <Link to='/products' className=" dropdown-link  md:hidden "> < ArrowUpRight size={16} />Products</Link> 
                     <Link to='/deals' className=" dropdown-link  md:hidden "> < ArrowUpRight size={16} />Deals</Link>
-                    { user.isAdmin && 
+                    { user?.isAdmin && 
                     (<Link to='/admin/products' className=" dropdown-link  "> < ShieldIcon size={16}  className=" text-app-orange-dark "/> <span className=" text-app-orange-dark">Admin Panel</span> </Link>
                      )}
 
                     { user && (
                       <div  className=" border-t border-app-border pt-1" >
-                        <button className=" flex items-center gap-3 px-4 py-2.5 text-sm
+                        <button onClick={ handleLogout } className=" flex items-center gap-3 px-4 py-2.5 text-sm
                          text-app-error hover:bg-red-50 w-full transition-colors ">
                           < LogOutIcon size={16} /> Log Out
                         </button>
