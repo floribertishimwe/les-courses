@@ -24,7 +24,7 @@ const Banner = () => {
                <span className="hidden sm:inline text-white/40">|</span>
                <div className="hidden sm:flex items-center gap-2 " > 
                   <ZapIcon  className=" size-3.5  fill-yellow-400 text-yellow-400 shrink-0"/>
-                  <span className=" text-xl font-semibold">Farm fresh products delivered daily</span>
+                  <span className="text-xs font-semibold">Farm fresh products delivered daily</span>
                </div>
             </div>
             <button onClick={dismissBanner} className="absolute right-2 top-1/2 -translate-y-1/2 p-1 hover:bg-white/10 rounded-full transition-colors">

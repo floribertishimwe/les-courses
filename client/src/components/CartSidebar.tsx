@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import { ArrowRight, ArrowRightIcon, MinusIcon, PlusIcon, ShoppingBagIcon, TrashIcon, XIcon } from "lucide-react";
-
+import { ArrowRightIcon, MinusIcon, PlusIcon, ShoppingBagIcon, TrashIcon, XIcon } from "lucide-react";
 
 const CartSideBar = () => {
 
@@ -23,18 +22,19 @@ const CartSideBar = () => {
      shadow-2xl flex flex-col animate-slide-in-right">
 
         {/* Header */}
-
-        <div  className=" flex items-center justify-between border-b border-app-border ">
-          <div className="flex items-center  gap-2">
-            < ShoppingBagIcon  className="size-5"/>
-            <h2 className=" text-gl font-medium " > Your Cart </h2>
-            <span  className=" px-2 py-0.5 text-xs font-semibold bg-app-cream rounded-full"> { items.length } items</span>
+{/* 
+        <div   className=" flex items-center justify-between  borber-b border-app-border " >
+        </div> */}
+        <div  className=" flex items-center justify-between  p-5 border-b border-app-border ">
+          <div className="flex items-center  gap-2 ">
+            <ShoppingBagIcon  className="size-5"/>
+            <h2 className=" text-lg font-medium " > Your Cart </h2>
+            <span  className=" px-2 py-0.5 text-xs font-semibold bg-app-cream rounded-full"> {items.length} items</span>
           </div>
 
-        <button  onClick={ ()=> setIsCartOpen (false) } className=" p-2 rounded-xl hover:bg-app-cream transition-colors" >
-            < XIcon className="size-5"/>
-        </button>
-
+          <button  onClick={ ()=> setIsCartOpen (false) } className=" p-2 rounded-xl hover:bg-app-cream transition-colors" >
+              < XIcon className="size-5"/>
+          </button>
         </div>
 
         {/* Items */}
@@ -80,7 +80,6 @@ const CartSideBar = () => {
 
               </div>
           ) ) ) }
-
         </div>
           {/* Footer */}
           { items.length > 0 && (
@@ -92,11 +91,11 @@ const CartSideBar = () => {
 
                 <div className=" flex justify-between text-sm ">
                   <span className=" text-app-text-light  " >  Delivery </span>
-                  <span className="font-medium " > { deliveryFee === 0 ? <span className=" text-app-success " > Free</span> : `&{currency}${deliveryFee.toFixed(2) }`}</span>
+                  <span className="font-medium " > { deliveryFee === 0 ? <span className=" text-app-success " > Free</span> : `${currency} ${deliveryFee.toFixed(2) }`}</span>
                 </div>
 
                 { deliveryFee > 0 && <p className=" text-xs text-app-text-light text-center" 
-                 > Free delivery on the orders over{ currency}20!</p> }
+                 > Free delivery on the orders over { currency}20 !</p> }
 
                  <div className=" flex justify-between text-base font-semibold border-t border-app-border pt-3" >
                     <span >Total</span>
@@ -106,13 +105,8 @@ const CartSideBar = () => {
                  hover:bg-app-orange-dark transition-colors flex-center gap-2 active:scale-[0.98]">
                     Proceed to checkout <ArrowRightIcon className=" size-4"/>
                  </button>
-                
              </div> 
           ) } 
-
-          
-          
-
     </div>
     </>
   )
