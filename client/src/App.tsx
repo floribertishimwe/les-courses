@@ -18,7 +18,7 @@ const App =()=>{
 
 return (
 <>
-<Toaster  position='top-right' toastOptions={{duration:3000, style:{ background:'#B3022',color:'#fff', borderRadius:'12px', fontSize:"14px"}}}/>
+<Toaster  position='top-right' toastOptions={{duration:3000, style:{ background:'#B3022', borderRadius:'12px', fontSize:"14px"}}}/>
 <Routes>
   {/* Login page - no navbar/footer  */}
 <Route  path='/login' element={<Login/>}/>
@@ -27,14 +27,14 @@ return (
 <Route path='/' element={<AppLayout/>}>
   <Route index element={<Home/>}/>
   <Route path='products' element={<Products/>}/>
-  <Route path ='products/:id' element={<ProductPage/>}/>
+  <Route path ='product/:id' element={<ProductPage/>}/>
   <Route path ='search' element={< SearchResults/>}/>
   <Route path ='deals' element={<  FlashDeals />}/>
 
   <Route  element={<ProtectedRoute />}>
     <Route  path='checkout' element={<CheckOut/>} />
     <Route  path='orders' element={<MyOders/>} />
-    <Route  path='orders/:id' element={<OderTracking/>} />
+    <Route  path='order/:id' element={<OderTracking/>} />
     <Route  path='addresses' element={<Addresses/>} />
   </Route>
    

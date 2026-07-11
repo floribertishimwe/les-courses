@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useSearchParams,Link } from "react-router-dom"
 import type { Product } from "../types";
-import { ChevronDownIcon, Home, SlidersHorizontalIcon } from "lucide-react";
+import { ChevronDownIcon, Home, SlidersHorizontalIcon, X } from "lucide-react";
 import { categoriesData, dummyProducts } from "../assets/assets";
 import ProductCard from "../components/home/ProductCard";
 import Loading from "../components/Loading";
@@ -25,7 +25,7 @@ const Products = () => {
 
   const fetchProduct = async() => {
     setLoading( true);
-    setProducts( dummyProducts.filter((product)=> product.category === category || category === "" ) );
+    setProducts(dummyProducts.filter((product)=> product.category === category || category === "" ));
     setLoading( false);
   }
 
@@ -65,14 +65,14 @@ const Products = () => {
           </Link>
             <span>/</span>
             <span className="text-app-green font-medium" >{activeCategory?activeCategory.name :"All Products"}</span>
-            <span></span>
-            <span></span>
+            {/* <span></span>
+            <span></span> */}
         </nav>
         <div className="flex gap-8 xl:gap-10">
           {/* Sidebar - Desktop */}
-          <aside className="hidden lg:block w-64 shrink:0">
+          <aside className="hidden lg:block w-64 shrink-0">
             <div className=" bg-white rounded-2xl p-4 sticky top-24 ">
-             <FilterPanel categories ={ categoriesData} category={category} organic={ organic} minPrice={minPrice}
+             <FilterPanel categories ={categoriesData} category={category} organic={ organic} minPrice={minPrice}
               maxPrice={maxPrice} updateFilter={ updateFilter} clearFilters={ clearFilters} hasFilters={hasFilters}/>
             </div>  
           </aside>
@@ -146,6 +146,30 @@ const Products = () => {
           </main>
         </div>
       </div>
+        {/* Mobile filters model */}
+        { mobileFiltersOpen && (
+          <>
+          <div className="fixed inset-0 bg-black/40  z-50" onClick={ ()=> setMobileFiltersOpen(false)}/>
+          <div className=" fixed bottom-0  left-0 right-0  bg-white  z-50 rounded-t-2xl max-h-[80vh] overflow-y-auto animate-slide-in-up ">
+          
+          <div className="flex items-center justify-between p-4 border-b border-app-border">
+            <h3 className="text-lg font-semibold text-app-green">Filters</h3>
+            <button onClick={()=> setMobileFiltersOpen(false)} className="p-2 hover:bg-app-cream  rounded-lg">
+              <X className="size-5"/>
+            </button>
+          </div>
+
+          < div className="p-4"onClick={()=> setMobileFiltersOpen(false)}   >
+            <FilterPanel categories ={ categoriesData} category={category} organic={ organic} minPrice={minPrice}
+              maxPrice={maxPrice} updateFilter={ updateFilter} clearFilters={ clearFilters} hasFilters={hasFilters}/>
+          
+          </div>
+
+
+          </div>
+          </>
+        ) }
+
     </div>
   )
 }

@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import type { CartItem, Product } from "../types";
+import {toast } from "react-hot-toast";
+
 
 interface cartContextType{
 
@@ -40,9 +42,9 @@ export function CartProvider( { children}: { children:ReactNode } ){
 
             return [ ...prev, { product,quantity}]
 
-        })
-
-        setIsCartOpen(true);
+        });
+        toast.success(`${product.name} added to cart!`);
+        // setIsCartOpen(true);
     }
 
     const removeFromCart=( productId : string)=>{
