@@ -348,7 +348,7 @@ export const dummyProducts = [
         image: "https://raw.githubusercontent.com/avinashdm/gs-images/main/greencart/evuovl2nlwdjukosfz23.png",
         category: "pantry-staples",
         unit: "5kg",
-        stock: 100,
+        stock:100,
         isOrganic: false,
         rating: 4.5,
         reviewCount: 12,

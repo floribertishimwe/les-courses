@@ -2,14 +2,12 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 import type { CartItem, Product } from "../types";
 import {toast } from "react-hot-toast";
 
-
 interface cartContextType{
-
     items: CartItem[];
     addToCart:( product:Product, quantity?:number )=>void;
     removeFromCart:( productId: string  )=>void;
     updateQuantity:( productId:string, quantity:number )=> void;
-    clearCart:( productId:string )=>void;
+    clearCart:()=>void;
     cartCount:number;
     cartTotal:number;
     isCartOpen:boolean;
