@@ -27,7 +27,7 @@ export function CartProvider( { children}: { children:ReactNode } ){
     const [ isCartOpen, setIsCartOpen ] = useState( false);
 
     useEffect(()=>{
-        localStorage.setItem("app_cart",JSON.stringify(items) )
+        localStorage.setItem("app_cart",JSON.stringify(items))
     },[items])
 
     const addToCart = ( product:Product,quantity = 1 )=>{
