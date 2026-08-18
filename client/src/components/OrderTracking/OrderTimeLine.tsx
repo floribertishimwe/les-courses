@@ -13,7 +13,6 @@ export default function OrderTimeLine({ order }: { order: any }) {
         "Out for Delivery": TruckIcon,
         Delivered: CheckIcon,
     };
-
     return (
         <div className="bg-white rounded-2xl p-6">
             <h2 className="text-lg font-semibold text-app-green mb-6">Delivery Progress</h2>

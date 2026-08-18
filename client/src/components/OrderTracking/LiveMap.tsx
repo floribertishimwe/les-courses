@@ -31,7 +31,6 @@ export default function LiveMap({ order, liveLocation }: { order: any, liveLocat
         }, [center, map]);
         return null;
     }
-
     return (
         <>
             {order.status !== "Delivered" && order.status !== "Cancelled" && (

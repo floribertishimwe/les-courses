@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import type { Product } from "../types";
 import { dummyProducts } from "../assets/assets";
-import { Loader2Icon, ZapIcon } from "lucide-react";
+import {  ZapIcon } from "lucide-react";
 import Loading from "../components/Loading";
 import ProductCard from "../components/home/ProductCard";
 
@@ -11,8 +11,8 @@ const FlashDeals = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(()=>{
-    setProducts( dummyProducts.filter((p)=>p.stock > 0));
-    setTimeout(()=> setLoading( false),1000);
+    setTimeout(()=>{setProducts( dummyProducts.filter((p)=>p.stock > 0));
+      setLoading( false)},1000);
   },[])
 
   return (

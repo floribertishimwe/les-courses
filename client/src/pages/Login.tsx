@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { replace, useNavigate,Link } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import { heroSectionData } from "../assets/assets";
 import { BikeIcon,Loader2Icon,LockIcon,MailIcon,UserIcon } from "lucide-react";
 
@@ -11,11 +11,10 @@ const Login = () => {
   const [password, setPassword] = useState(""); 
   const [loading, setLoading] = useState(false); 
 
-
+ const navigate = useNavigate();
   const handleSubmit = async (e: React.SubmitEvent)=>{
     e.preventDefault();
     setLoading(true);
-    const navigate = useNavigate();
     setTimeout(()=> navigate( '/', { replace:true }), 1000);
 
 

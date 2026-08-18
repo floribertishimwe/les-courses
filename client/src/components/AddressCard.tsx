@@ -1,4 +1,4 @@
-import { CheckIcon, MapPinIcon } from "lucide-react";
+import { CheckIcon, MapPinIcon, PencilIcon, TrashIcon } from "lucide-react";
 import type { Address } from "../types"
 
 interface AddressCardProps{
@@ -8,8 +8,7 @@ interface AddressCardProps{
 }
 
 const AddressCard = ({addr, onEditHandler, setAddress}: AddressCardProps) => {
-
-    const handleDelete = async()=> {
+    const handleDelete = async(id:string)=> {
       console.log(addr);
     }
   return (
@@ -38,10 +37,18 @@ const AddressCard = ({addr, onEditHandler, setAddress}: AddressCardProps) => {
         </div>
 
       </div>
-
       {/* Right - action buttons*/}
+      <div className="flex items-center gap-1" >
+       <button  onClick={()=>onEditHandler(addr)} className="p-2 text-app-text-light
+        hover:bg-app-cream hover:text-app-green rounded-lg transition-colors">
+        <PencilIcon className="size-4"/>
+       </button>
+       <button  onClick={()=>handleDelete(addr._id)} className="p-2 text-app-text-light
+        hover:bg-red-50 hover:text-app-error rounded-lg transition-colors">
+        <TrashIcon className="size-4"/>
+       </button>
+      </div>
     </div>
   )
 }
-
 export default AddressCard
