@@ -50,7 +50,6 @@ const Products = () => {
   const activeCategory = categoriesData.find((c)=>c.slug === category);
   const hasFilters = category || organic || minPrice || maxPrice;
 
-
   useEffect(()=>{
     fetchProduct();
   },[ category, organic, sort, page, minPrice, maxPrice]);
